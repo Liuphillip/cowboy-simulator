@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf24wtywr1tmb"]
+
+[ext_resource type="Script" uid="uid://dlcsm6161orfo" path="res://Player/player.gd" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://3dtubnrsq63l" path="res://Player/smooth_camera_arm.gd" id="2_4ntmi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_l8h54"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l8h54"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_l8h54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_hvfyp")
+
+[node name="HorizontalPivot" type="Node3D" parent="."]
+
+[node name="VerticalPivot" type="Node3D" parent="HorizontalPivot"]
+
+[node name="CameraShakePivot" type="Node3D" parent="HorizontalPivot/VerticalPivot"]
+
+[node name="SmoothCameraArm" type="SpringArm3D" parent="HorizontalPivot/VerticalPivot/CameraShakePivot"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0)
+shape = SubResource("SeparationRayShape3D_l8h54")
+spring_length = 4.0
+script = ExtResource("2_4ntmi")
+
+[node name="Camera" type="Camera3D" parent="HorizontalPivot/VerticalPivot/CameraShakePivot/SmoothCameraArm"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_l8h54")
+
+[node name="RayDebug" type="MeshInstance3D" parent="."]

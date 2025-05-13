@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://38t0xx11hsb6"]
+
+[ext_resource type="Script" uid="uid://bbybyvqmf5ym6" path="res://Fight/control.gd" id="1_vd4dc"]
+
+[node name="ComboUI" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -130.0
+script = ExtResource("1_vd4dc")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
